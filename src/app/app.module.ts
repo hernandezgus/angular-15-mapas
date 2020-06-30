@@ -18,7 +18,7 @@ import { MapaComponent } from './components/mapa/mapa.component';
     BrowserAnimationsModule,
     MaterialModule,
     AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+      apiKey:  'YOUR_GOOGLE_MAPS_API_KEY'
     })
   ],
   providers: [],
