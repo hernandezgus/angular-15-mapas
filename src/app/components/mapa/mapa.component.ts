@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Marcador } from '../../classes/marcador.class';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { MapaEditarComponent } from './mapa-editar.component';
 
 @Component({
   selector: 'app-mapa',
@@ -14,7 +16,7 @@ export class MapaComponent implements OnInit {
   lng = 7.809007;
   lat = 51.678418;
 
-  constructor( private snackBar: MatSnackBar ) {
+  constructor( private snackBar: MatSnackBar, private dialog: MatDialog ) {
     // const nuevoMarcador = new Marcador( this.lat, this.lng );
     // this.marcadores.push(nuevoMarcador);
    }
@@ -51,11 +53,23 @@ export class MapaComponent implements OnInit {
     this.openSnackBar('Marcador borrado', 'Cerrar');
   }
 
-  editarMarcador( i: number ) {
-    console.log(i);
+  editarMarcador( marcador: Marcador ) {
+    console.log( marcador );
     // this.marcadores.splice(i, 1);
-    // this.guardarEnStorage();
-    this.openSnackBar('Marcador editado', 'Cerrar');
+    const dialogRef = this.dialog.open( MapaEditarComponent, {
+      width: '250px',
+      data: { titulo: marcador.titulo, descripcion: marcador.descripcion }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (!result) {
+        return;
+      }
+      marcador.titulo = result.titulo;
+      marcador.descripcion = result.descripcion;
+      this.guardarEnStorage();
+      this.openSnackBar('Marcador editado', 'Cerrar');
+    });
   }
 
   openSnackBar(message: string, action: string) {

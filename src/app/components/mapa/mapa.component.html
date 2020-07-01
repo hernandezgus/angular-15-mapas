@@ -4,10 +4,10 @@
         <agm-map (mapClick)="agregarMarcador( $event )" [latitude]="lat" [longitude]="lng" [zoom]="15">
             <agm-marker *ngFor="let marc of marcadores; let i = index" [latitude]="marc.lat" [longitude]="marc.lng">
                 <agm-info-window [disableAutoPan]="true">
-                    <strong>{{ marc.title }}</strong>
+                    <strong>{{ marc.titulo }}</strong>
                     <p>{{ marc.descripcion }}</p>
                     <div>
-                        <button mat-raised-button color="primary" (click)="editarMarcador(i)">Editar</button>
+                        <button mat-raised-button color="primary" (click)="editarMarcador(marc)">Editar</button>
                         <button mat-raised-button color="warn" (click)="borrarMarcador(i)">Borrar</button>
                     </div>
                 </agm-info-window>

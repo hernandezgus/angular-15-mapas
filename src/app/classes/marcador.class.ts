@@ -1,7 +1,7 @@
 export class Marcador {
     public lat: number;
     public lng: number;
-    public title = 'No title';
+    public titulo = 'No title';
     public descripcion = 'Sin Desc';
 
     constructor( lat: number, lng: number ) {

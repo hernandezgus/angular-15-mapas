@@ -1,0 +1,15 @@
+<form [formGroup]="forma">
+    <mat-form-field class="example-full-width">
+        <mat-label>Titulo</mat-label>
+        <input matInput placeholder="Algun titulo" formControlName="titulo">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Descripcion</mat-label>
+        <textarea matInput placeholder="Ex. It makes me feel..." formControlName="descripcion"></textarea>
+    </mat-form-field>
+
+    <div>
+        <button mat-raised-button color="primary" (click)="guardarCambios()">Guardar</button>
+        <button mat-raised-button color="warn" (click)="onNoClick()">Cancelar</button>
+    </div>
+</form>
